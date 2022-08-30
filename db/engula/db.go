@@ -33,11 +33,17 @@ func (c *engulaCreator) Create(p *properties.Properties) (ycsb.DB, error) {
 	dbName := p.GetString(engulaDatabase, "db")
 	coName := p.GetString(engulaCollection, "co")
 	db, err := client.GetDatabase(context.Background(), dbName)
+	if err == engula_go.ErrNotFound {
+		db, err = client.CreateDatabase(context.Background(), dbName)
+	}
 	if err != nil {
 		return nil, err
 	}
 
 	collection, err := db.GetCollection(context.Background(), coName)
+	if err == engula_go.ErrNotFound {
+		collection, err = db.CreateHashCollection(context.Background(), coName, 64)
+	}
 	if err != nil {
 		return nil, err
 	}

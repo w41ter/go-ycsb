@@ -69,6 +69,8 @@ import (
 	_ "github.com/pingcap/go-ycsb/db/minio"
 	// Register elastic
 	_ "github.com/pingcap/go-ycsb/db/elasticsearch"
+	// Register engula database
+	_ "github.com/pingcap/go-ycsb/db/engula"
 )
 
 var (
