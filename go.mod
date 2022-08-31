@@ -88,7 +88,7 @@ require (
 	github.com/tidwall/pretty v1.2.0 // indirect
 	github.com/tikv/pd/client v0.0.0-20220307081149-841fa61e9710 // indirect
 	github.com/twmb/murmur3 v1.1.3 // indirect
-	github.com/w41ter/engula-go v0.0.0-20220829121334-642fe5f4980d
+	github.com/w41ter/engula-go v0.0.0-20220831123910-c7c2a114b24b
 	github.com/xdg-go/pbkdf2 v1.0.0 // indirect
 	github.com/xdg-go/scram v1.0.2 // indirect
 	github.com/xdg-go/stringprep v1.0.2 // indirect

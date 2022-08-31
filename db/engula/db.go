@@ -15,13 +15,15 @@ const (
 	engulaProxy      = "engula.proxy"
 	engulaDatabase   = "engula.db"
 	engulaCollection = "engula.collection"
+	engulaConn       = "engula.conn"
 )
 
 type engulaCreator struct{}
 
 func (c *engulaCreator) Create(p *properties.Properties) (ycsb.DB, error) {
 	addrs := p.GetString(engulaProxy, "127.0.0.1:21805")
-	resolverBuilder := engula_go.NewStaticResolverBuilder(strings.Split(addrs, ","))
+	conn := p.GetInt(engulaConn, 8)
+	resolverBuilder := engula_go.NewStaticResolverBuilder(uint16(conn), strings.Split(addrs, ","))
 	cfg := engula_go.DefaultConfig()
 	cfg.ResolverBuilder = resolverBuilder
 	cfg.Endpoints = resolverBuilder.Endpoints()
